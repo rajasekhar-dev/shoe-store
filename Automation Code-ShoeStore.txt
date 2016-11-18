@@ -1,0 +1,101 @@
+//opening the website
+--------------------------
+
+package SStore;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Mainpage {
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\selenium-2.53.0\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://rb-shoe-store.herokuapp.com/");
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		driver.close();
+	}
+}
+
+
+//fetching all the links on page
+---------------------------------
+
+package SStore;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Mainpage {
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\selenium-2.53.0\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://rb-shoe-store.herokuapp.com/");
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+		List<WebElement> allLinks = driver.findElements(By.tagName("a"));
+		System.out.println("Total Links are:" +allLinks.size());
+		driver.close();
+
+	}
+
+}
+
+//Navigating through the month wise shoe information
+------------------------------------------------------
+
+package SStore;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class Mainpage {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\selenium-2.53.0\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.navigate().to("https://rb-shoe-store.herokuapp.com/");
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//*[@id='header_nav']/nav/ul/li[1]/a")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.navigate().back();
+		Thread.sleep(8000);
+		driver.findElement(By.xpath("//*[@id='header_nav']/nav/ul/li[2]/a")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.close();
+
+	}
+
+}
+
+//Submit email for reminder
+-------------------------------
+package SStore;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class Mainpage {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\selenium-2.53.0\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.navigate().to("https://rb-shoe-store.herokuapp.com/");
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//*[@id='remind_email_input']")).sendKeys("shoe@gmail.com");
+		driver.findElement(By.xpath("//*[@id='remind_email_submit']")).click();
+		Thread.sleep(50000);
+		driver.close();
+		
+	}
+
+}
